@@ -10,7 +10,7 @@
   </Target>
 
   <ItemGroup>
-    <ProjectReference Include="..\DllLoader.Contracts\DllLoader.Contracts.csproj" />
+    <PackageReference Include="Flint-Cli.Contracts" Version="1.0.0-alpha" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,5 @@
-﻿using DllLoader.Contracts;
+﻿using FlintCli.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TestPlugin
 {

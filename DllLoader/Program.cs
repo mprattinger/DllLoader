@@ -1,9 +1,5 @@
-﻿using DllLoader.Contracts;
-using DllLoader.Loader;
+﻿using DllLoader.Loader;
 using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 
 namespace DllLoader
 {
