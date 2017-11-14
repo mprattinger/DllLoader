@@ -11,4 +11,14 @@
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DllLoader.Contracts\DllLoader.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="plugins\TestPlugin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
