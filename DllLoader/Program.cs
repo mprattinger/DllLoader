@@ -9,10 +9,10 @@ namespace DllLoader
     {
         static void Main(string[] args)
         {
-            var pLoader = new PluginLoader();
-            pLoader.Init();
+            //var pLoader = new PluginLoader();
+            //pLoader.Init();
 
-
+            //Console.WriteLine(Product.Version + " " + Product.LongName + " " + Product.Name);
 
             ////pLoader.Execute();
 

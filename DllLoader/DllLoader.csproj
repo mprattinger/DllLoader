@@ -4,6 +4,9 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Platforms>AnyCPU;x64</Platforms>
+    <Authors>MPrattinger</Authors>
+    <Company>FlintSoft</Company>
+    <Product>DllLoader</Product>
   </PropertyGroup>
 
   <ItemGroup>
