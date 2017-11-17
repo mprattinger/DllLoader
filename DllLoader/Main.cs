@@ -35,7 +35,7 @@ namespace DllLoader
             {
                 if (IsArg(args[lastArg], "h", "help"))
                 {
-
+                    printHelp();
                     return 0;
                 }
                 else if (IsArg(args[lastArg], "version"))
@@ -69,6 +69,12 @@ namespace DllLoader
             Reporter.Output.WriteLine($" OS Version:  {Microsoft.DotNet.PlatformAbstractions.RuntimeEnvironment.OperatingSystemVersion}");
             Reporter.Output.WriteLine($" OS Platform: {Microsoft.DotNet.PlatformAbstractions.RuntimeEnvironment.OperatingSystemPlatform}");
             Reporter.Output.WriteLine($" Base Path:   {ApplicationEnvironment.ApplicationBasePath}");
+        }
+
+        private void printHelp()
+        {
+            Help.PrintVersionHeader();
+            Help.PrintUsage(PluginLoader);
         }
 
         private bool IsArg(string candidate, string longName)

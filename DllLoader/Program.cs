@@ -1,5 +1,6 @@
 ﻿using DllLoader.Loader;
 using DllLoader.Utils;
+using DllLoader.Utils.Localization;
 using System;
 using System.Reflection;
 
@@ -9,6 +10,9 @@ namespace DllLoader
     {
         static void Main(string[] args)
         {
+            var main = new Main();
+            main.ProcessArgs(args);
+
             //var pLoader = new PluginLoader();
             //pLoader.Init();
 
