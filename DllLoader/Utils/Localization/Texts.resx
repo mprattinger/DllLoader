@@ -120,7 +120,22 @@
   <data name="Hello" xml:space="preserve">
     <value>Das ist ein Test</value>
   </data>
+  <data name="HelpText" xml:space="preserve">
+    <value>Hilfe anzeigen</value>
+  </data>
+  <data name="InfoText" xml:space="preserve">
+    <value>Info anzeigen</value>
+  </data>
+  <data name="Plugins" xml:space="preserve">
+    <value>Verfügbare Plugins</value>
+  </data>
+  <data name="ToolOptions" xml:space="preserve">
+    <value>Tool Options</value>
+  </data>
   <data name="Usage" xml:space="preserve">
     <value>Syntax</value>
+  </data>
+  <data name="VersionText" xml:space="preserve">
+    <value>Version anzeigen</value>
   </data>
 </root>

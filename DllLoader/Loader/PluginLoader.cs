@@ -22,6 +22,11 @@ namespace DllLoader.Loader
             Plugins = initPlugins(assem);
         }
 
+        public bool IsPlugin(string candidate)
+        {
+            return Plugins.Any(p => (p.Info.ShortName == $"-{candidate}" || p.Info.LongName == $"--{candidate}"));
+        }
+
         public void Execute()
         {
             Plugins.ForEach(p =>

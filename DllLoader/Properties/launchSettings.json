@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DllLoader": {
+      "commandName": "Project",
+      "commandLineArgs": "-h"
+    }
+  }
+}

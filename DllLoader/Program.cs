@@ -11,10 +11,8 @@ namespace DllLoader
         static void Main(string[] args)
         {
             var main = new Main();
+            main.Init();
             main.ProcessArgs(args);
-
-            //var pLoader = new PluginLoader();
-            //pLoader.Init();
 
             //Console.WriteLine(Product.Version + " " + Product.LongName + " " + Product.Name);
 
@@ -27,8 +25,8 @@ namespace DllLoader
             //    Console.WriteLine($"{p.Info.LongName} / {p.Info.ShortName} => {p.Info.UniquePluginName}");
             //});
 
-            Console.WriteLine("Press any key...");
-            Console.ReadKey();
+            //Console.WriteLine("Press any key...");
+            //Console.ReadKey();
         }
 
         public static int ProcessArgs(string[] args)

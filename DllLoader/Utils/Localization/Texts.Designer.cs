@@ -70,11 +70,56 @@ namespace DllLoader.Utils.Localization {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Hilfe anzeigen ähnelt.
+        /// </summary>
+        internal static string HelpText {
+            get {
+                return ResourceManager.GetString("HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Info anzeigen ähnelt.
+        /// </summary>
+        internal static string InfoText {
+            get {
+                return ResourceManager.GetString("InfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Verfügbare Plugins ähnelt.
+        /// </summary>
+        internal static string Plugins {
+            get {
+                return ResourceManager.GetString("Plugins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Tool Options ähnelt.
+        /// </summary>
+        internal static string ToolOptions {
+            get {
+                return ResourceManager.GetString("ToolOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Syntax ähnelt.
         /// </summary>
         internal static string Usage {
             get {
                 return ResourceManager.GetString("Usage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Version anzeigen ähnelt.
+        /// </summary>
+        internal static string VersionText {
+            get {
+                return ResourceManager.GetString("VersionText", resourceCulture);
             }
         }
     }

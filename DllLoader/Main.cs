@@ -48,6 +48,15 @@ namespace DllLoader
                     printInfo();
                     return 0;
                 }
+                else if (args[lastArg].StartsWith("-"))
+                {
+                    if (PluginLoader.IsPlugin(args[lastArg]))
+                    {
+                        //Execute Plugin
+                        return 0;
+                    }
+                }
+                printHelp();
             }
             return 1;
         }
