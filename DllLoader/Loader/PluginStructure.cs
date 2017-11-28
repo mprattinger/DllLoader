@@ -2,7 +2,7 @@
 
 namespace DllLoader.Loader
 {
-    public struct PluginStructure
+    public class PluginStructure
     {
         public string UniqueName { get; set; }
         public PluginInfo Info { get; set; }

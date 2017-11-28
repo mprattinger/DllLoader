@@ -10,6 +10,7 @@ namespace DllLoader.Utils
     {
         public static void PrintVersionHeader()
         {
+            Reporter.Output.WriteLine();
             var versionString = string.IsNullOrEmpty(Product.Version) ? string.Empty : $" ({Product.Version})";
             Reporter.Output.WriteLine(Product.LongName + versionString);
         }
@@ -17,6 +18,7 @@ namespace DllLoader.Utils
         public static void PrintUsage(PluginLoader pLoader)
         {
             var sb = new StringBuilder();
+            sb.AppendLine("");
             sb.AppendLine($@"{Texts.Usage}: flintc [tool-options] [plugin] [plugin-options]");
             sb.AppendLine("");
             sb.AppendLine($"{Texts.Plugins}:");
@@ -26,7 +28,7 @@ namespace DllLoader.Utils
             sb.AppendLine("");
             sb.AppendLine($"{Texts.ToolOptions}:");
             sb.AppendLine($"\t-h|--help\t{Texts.HelpText}");
-            sb.AppendLine($"\t-v|--version\t{Texts.VersionText}");
+            sb.AppendLine($"\t--version\t{Texts.VersionText}");
             sb.AppendLine("");
             Reporter.Output.Write(sb.ToString());
         }

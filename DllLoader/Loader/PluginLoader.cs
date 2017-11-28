@@ -24,15 +24,14 @@ namespace DllLoader.Loader
 
         public bool IsPlugin(string candidate)
         {
-            return Plugins.Any(p => (p.Info.ShortName == $"-{candidate}" || p.Info.LongName == $"--{candidate}"));
+            return Plugins.Any(p => (p.Info.PluginCommand == candidate));
         }
 
-        public void Execute()
+        public string ExecutePlugin(string candidate, string[] args)
         {
-            Plugins.ForEach(p =>
-            {
-                p.Plugin.Run();
-            });
+            var plugin = Plugins.Where(p => p.Info.PluginCommand == candidate).First();
+            if (plugin==null) throw new PluginNotFoundException(candidate);
+            return plugin.Plugin.Execute(args);
         }
 
         private List<string> getDllFiles()
@@ -64,7 +63,7 @@ namespace DllLoader.Loader
                     var type = getType(a);
                     var plugin = Activator.CreateInstance(type) as IPlugin; //Class-Type anhand des Namens ermitteln!!!!
                     var inf = plugin.GetPluginInfo();
-                    ret.Add(new PluginStructure { UniqueName = inf.UniquePluginName, Info = inf, Plugin = plugin });
+                    ret.Add(new PluginStructure { UniqueName = inf.UniquePluginName.ToLower(), Info = inf, Plugin = plugin });
                 }
                 catch (Exception ex)
                 {

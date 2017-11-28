@@ -13,20 +13,6 @@ namespace DllLoader
             var main = new Main();
             main.Init();
             main.ProcessArgs(args);
-
-            //Console.WriteLine(Product.Version + " " + Product.LongName + " " + Product.Name);
-
-            ////pLoader.Execute();
-
-            //Console.WriteLine("DllLoader v1.0.0-alpha (c) MPrattinger 2017");
-            //Console.WriteLine("===========================================");
-            //Console.WriteLine("");
-            //pLoader.Plugins.ForEach(p => {
-            //    Console.WriteLine($"{p.Info.LongName} / {p.Info.ShortName} => {p.Info.UniquePluginName}");
-            //});
-
-            //Console.WriteLine("Press any key...");
-            //Console.ReadKey();
         }
 
         public static int ProcessArgs(string[] args)

@@ -2,6 +2,7 @@
 using DllLoader.Utils;
 using Microsoft.DotNet.PlatformAbstractions;
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace DllLoader
@@ -48,11 +49,15 @@ namespace DllLoader
                     printInfo();
                     return 0;
                 }
-                else if (args[lastArg].StartsWith("-"))
+                else
                 {
                     if (PluginLoader.IsPlugin(args[lastArg]))
                     {
                         //Execute Plugin
+                        var command = args[lastArg];
+                        var newFirst = lastArg + 1;
+                        var a = args.Skip(newFirst).Take(args.Length - newFirst).ToArray();
+                        PluginLoader.ExecutePlugin(command, a);
                         return 0;
                     }
                 }

@@ -2,7 +2,7 @@
   "profiles": {
     "DllLoader": {
       "commandName": "Project",
-      "commandLineArgs": "-h"
+      "commandLineArgs": "test -x -y abc"
     }
   }
 }
