@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Flint-Cli.Contracts" Version="1.0.2-alpha" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1-beta1" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
   </ItemGroup>
 
@@ -25,7 +26,7 @@
 
   <ItemGroup>
     <None Update="plugins\TestPlugin.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
@@ -35,5 +36,9 @@
       <LastGenOutput>Texts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /Y &quot;$(SolutionDir)DllLoader\plugins\&quot; $(TargetDir)plugins\" />
+  </Target>
 
 </Project>

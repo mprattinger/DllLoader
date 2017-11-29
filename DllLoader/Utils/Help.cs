@@ -23,7 +23,7 @@ namespace DllLoader.Utils
             sb.AppendLine("");
             sb.AppendLine($"{Texts.Plugins}:");
             pLoader.Plugins.ForEach(p => {
-                sb.AppendLine($"\t{p.UniqueName}");
+                sb.AppendLine($"\t{p.Info.PluginCommand}\t{p.UniqueName}");
             });
             sb.AppendLine("");
             sb.AppendLine($"{Texts.ToolOptions}:");

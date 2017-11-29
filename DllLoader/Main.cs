@@ -61,8 +61,8 @@ namespace DllLoader
                         return 0;
                     }
                 }
-                printHelp();
             }
+            printHelp();
             return 1;
         }
 

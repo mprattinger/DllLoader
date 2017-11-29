@@ -2,6 +2,7 @@
 using DllLoader.Utils;
 using DllLoader.Utils.Localization;
 using System;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace DllLoader
@@ -13,6 +14,13 @@ namespace DllLoader
             var main = new Main();
             main.Init();
             main.ProcessArgs(args);
+
+            if (Debugger.IsAttached)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Press any key...");
+                Console.ReadKey();
+            }
         }
 
         public static int ProcessArgs(string[] args)

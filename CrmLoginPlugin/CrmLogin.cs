@@ -1,5 +1,6 @@
 ﻿using FlintCli.Contracts;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -12,7 +13,7 @@ namespace CrmLoginPlugin
         {
             var proc = new LoginProcessor();
 
-            if (IsArg(args[0], "h", "help"))
+            if (args.Length == 0 || IsArg(args[0], "h", "help"))
             {
                 //Print help
                 printHelp();
@@ -20,7 +21,7 @@ namespace CrmLoginPlugin
             else if (IsArg(args[0], "a", "add"))
             {
                 var a = args.Skip(1).Take(args.Length - 1).ToArray();
-                proc.AddLogin(a);
+                proc.AddLogin(a).Wait();
             }
             else if (IsArg(args[0], "l", "list"))
             {
@@ -28,12 +29,17 @@ namespace CrmLoginPlugin
             }
             else if (IsArg(args[0], "d", "delete"))
             {
-                var a = args.Skip(1).Take(args.Length - 1).ToArray();
-                proc.Login(a);
+                string[] a = new List<string>().ToArray();
+                if(args.Length > 1) a = args.Skip(1).Take(args.Length - 1).ToArray();
+                proc.DeleteLogin(a).Wait();
             }
             else if (IsArg(args[0], "r", "removeall"))
             {
-                proc.RemoveAll();
+                proc.RemoveAll().Wait();
+            }
+            else if (args[0].StartsWith("-")){
+                //Es wurde ein flag angegeben, das es aber nicht gibt - hilfe anzeigen
+                printHelp();
             }
             else
             {
@@ -58,7 +64,7 @@ namespace CrmLoginPlugin
             sb.AppendLine("\t-r|--removeall\tDelete all logins");
             sb.AppendLine("");
             sb.AppendLine($"Login:");
-            sb.AppendLine($"\tUsage <system> <country_short> or <username>");
+            sb.AppendLine($"\tUsage <system> <username>");
             sb.AppendLine("");
             Console.Write(sb.ToString());
         }

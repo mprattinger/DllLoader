@@ -63,7 +63,7 @@ namespace DllLoader.Loader
                     var type = getType(a);
                     var plugin = Activator.CreateInstance(type) as IPlugin; //Class-Type anhand des Namens ermitteln!!!!
                     var inf = plugin.GetPluginInfo();
-                    ret.Add(new PluginStructure { UniqueName = inf.UniquePluginName.ToLower(), Info = inf, Plugin = plugin });
+                    ret.Add(new PluginStructure { UniqueName = inf.UniquePluginName, Info = inf, Plugin = plugin });
                 }
                 catch (Exception ex)
                 {

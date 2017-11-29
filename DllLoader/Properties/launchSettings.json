@@ -2,7 +2,7 @@
   "profiles": {
     "DllLoader": {
       "commandName": "Project",
-      "commandLineArgs": "test -x -y abc"
+      "commandLineArgs": "crmlogin -a"
     }
   }
 }

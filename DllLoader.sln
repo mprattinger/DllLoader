@@ -4,10 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DllLoader", "DllLoader\DllLoader.csproj", "{F2505FB3-1945-4BB7-BB5B-195D1141A8D2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{87637E05-C705-445E-85CA-1AE026AA7A2C} = {87637E05-C705-445E-85CA-1AE026AA7A2C}
+		{795BB02B-5790-464B-92DA-0476190EB25F} = {795BB02B-5790-464B-92DA-0476190EB25F}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPlugin", "TestPlugin\TestPlugin.csproj", "{795BB02B-5790-464B-92DA-0476190EB25F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrmLoginPlugin", "CrmLoginPlugin\CrmLoginPlugin.csproj", "{87637E05-C705-445E-85CA-1AE026AA7A2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrmLoginPlugin", "CrmLoginPlugin\CrmLoginPlugin.csproj", "{87637E05-C705-445E-85CA-1AE026AA7A2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
