@@ -12,6 +12,7 @@ namespace CrmLoginPlugin
         public string Execute(string[] args)
         {
             var proc = new LoginProcessor();
+            proc.Init().Wait();
 
             if (args.Length == 0 || IsArg(args[0], "h", "help"))
             {
@@ -60,7 +61,7 @@ namespace CrmLoginPlugin
             sb.AppendLine("\t-h|--help\tHelp");
             sb.AppendLine("\t-a|--add\tAdd new login, usage: -a/--add <system> <country_short> <username> <password>");
             sb.AppendLine("\t-l|--list\tList logins");
-            sb.AppendLine("\t-d|--delete\tDelete loging, usage: -d/--delete <username>");
+            sb.AppendLine("\t-d|--delete\tDelete loging, usage: -d/--delete <username> <system>");
             sb.AppendLine("\t-r|--removeall\tDelete all logins");
             sb.AppendLine("");
             sb.AppendLine($"Login:");

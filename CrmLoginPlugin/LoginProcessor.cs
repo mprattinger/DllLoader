@@ -25,6 +25,8 @@ namespace CrmLoginPlugin
     {
         const string fileName = "CRMLogin.db";
 
+        public bool TestMode { get; set; }
+
         public List<LoginDataModel> Logins { get; set; }
         public LoginUserMode LoginMode { get; set; }
         public string Country { get; set; }
@@ -34,22 +36,30 @@ namespace CrmLoginPlugin
 
         public LoginProcessor()
         {
+            Logins = new List<LoginDataModel>();
+        }
+
+        public async Task<FileInfo> Init()
+        {
             //Daten laden
+            var fi = new System.IO.FileInfo(fileName);
             //Wenn es kein File gibt, dann eines anlegen
-            if (!System.IO.File.Exists(fileName))
+            if (!fi.Exists)
             {
-                var sw = System.IO.File.CreateText(fileName);
-                sw.Flush();
+                var sw = fi.CreateText();
+                await sw.FlushAsync();
                 sw.Close();
-                sw.Close();
+                sw.Dispose();
+                fi.Refresh();
             }
-            using (var sr = new StreamReader(fileName))
+
+            using (var sr = fi.OpenText())
             {
                 string json = sr.ReadToEnd();
                 Logins = JsonConvert.DeserializeObject<List<LoginDataModel>>(json);
                 sr.Close();
             }
-            if (Logins == null) Logins = new List<LoginDataModel>();
+            return fi;
         }
 
         public async Task DeleteLogin(string[] args)
@@ -80,6 +90,7 @@ namespace CrmLoginPlugin
             }
 
             Logins.Remove(login2Delete);
+            if (TestMode) return;
 
             Console.WriteLine($"\nDo you want to delete this login {Username}@{Sys}? (y/n): ");
             var answer = Console.ReadKey();
@@ -121,6 +132,7 @@ namespace CrmLoginPlugin
 
             var model = new LoginDataModel { Country = Country, Sys = Sys, Username = Username, Password = pw };
             Logins.Add(model);
+            if (TestMode) return;
             if (await saveData()) Console.WriteLine("Login added!");
         }
 
@@ -168,6 +180,7 @@ namespace CrmLoginPlugin
 
         private async Task<bool> saveData()
         {
+            if (TestMode) return true;
             try
             {
                 var fi = new System.IO.FileInfo(fileName);
@@ -189,17 +202,34 @@ namespace CrmLoginPlugin
             return true;
         }
 
-        private void loadSystem(string[] args)
+        private string loadSystem(string[] args)
         {
             var system = String.Empty;
+            var index = -1;
+
+            switch (ProcessorMode)
+            {
+                case ProcessorMode.DELETE:
+                    index = 1;
+                    break;
+                case ProcessorMode.ADD:
+                    index = 0;
+                    break;
+                default:
+                    break;
+            }
+
+            if (index == -1) return string.Empty;
+
             try
             {
-                system = args[0];
+                system = args[index];
             }
             catch (Exception) { }
 
             if (String.IsNullOrEmpty(system)) system = askSystem();
             Sys = system.ToUpper();
+            return system;
         }
 
         private string askSystem()
@@ -210,15 +240,15 @@ namespace CrmLoginPlugin
 
         private string loadCountry(string[] args)
         {
-            var user = String.Empty;
+            var cntr = String.Empty;
             try
             {
-                user = args[1];
+                cntr = args[1];
             }
             catch (Exception) { }
-            if (String.IsNullOrEmpty(user)) user = askUser();
-            Username = user.ToUpper();
-            return user;
+            if (String.IsNullOrEmpty(cntr)) cntr = askCountry();
+            Country = cntr.ToUpper();
+            return cntr;
         }
 
         private string askCountry()
